@@ -20,6 +20,14 @@ app.controller('EventsController', ['$scope', function($scope, Event) {
     $scope.event = {};
   };
 
+  $scope.filterEvents = function() {
+    Event.search({query: $scope.search}),
+      function(response, _headers) {
+        $scope.events = response;
+      }
+    );
+  };
+
   valid = function() {
     return !!$scope.event &&
       !!$scope.event.name && !!$scope.event.event_date &&

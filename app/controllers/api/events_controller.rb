@@ -6,6 +6,13 @@ module Api
       respond_with Event.all
     end
 
+    def search
+      query = params[:query]
+      events = Event.where('name Like ? OR place LIKE ? OR description LIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+
+      respond_with evetns
+    end
+
     def create
       event = Event.new(event_params)
       if event.save
@@ -13,6 +20,14 @@ module Api
       else
         render json: { errors: event.errors.full_messages }, status: :unprocessable_entity
       end
+    end
+
+    def update
+
+    end
+
+    def destroy
+
     end
 
     private
