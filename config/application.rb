@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module RailsAngular
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
     # Settings in config/environments/* take precedence over those specified here.
