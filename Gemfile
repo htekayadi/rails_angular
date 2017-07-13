@@ -10,7 +10,7 @@ gem 'responders'
 gem 'angular_rails_csrf'
 
 group :development, :test do
-  gem 'pry-rails'
+  gem 'byebug'
 end
 
 group :development do
