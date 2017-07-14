@@ -1,2 +1,56 @@
-<h1>Guests#index</h1>
-<p>Find me in app/views/guests/index.html.erb</p>
+<div class="container" ng-app="GuestCenter">
+  <h1>Guests</h1>
+
+  <div ng-controller="guestsController">
+    <div class="well">
+      <h3>Add a new Guest</h3>
+      <form ng-submit="addGuest()">
+        <div class="row">
+          <div class="col-xs-6">
+            <input type="text" ng-model="newGuest.first_name" class="form-control" placeholder="First Name" />
+          </div>
+          <div class="col-xs-6">
+            <input type="text" ng-model="newGuest.last_name" class="form-control" placeholder="Last Name" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <br />
+            <input type="text" ng-model="newGuest.reason" class="form-control" placeholder="Reason for Visit" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <br />
+            <input type="Submit" value="Add Guest" class="btn btn-primary" />
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <h3>Currently Visiting</h3>
+    <hr />
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Reason for Visit</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-show="!guests.length">
+          <td colspan="4">No guests in the building.</td>
+        </tr>
+        <tr ng-repeat="guest in guests">
+          <td>{{ guest.first_name }}</td>
+          <td>{{ guest.last_name }}</td>
+          <td>{{ guest.reason }}</td>
+          <td><a class="btn btn-danger" ng-click="deleteGuest($index)">Remove</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
