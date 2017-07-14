@@ -1,25 +1,25 @@
-var visitorCenter = angular.module('VisitorCenter', ['ngResource']);
+var guestCenter = angular.module('GuestCenter', ['ngResource']);
 
-visitorCenter.factory("Guest", function($resource) {
-  return $resource("visitors/:id", { id: '@id' }, {
+guestCenter.factory("Guest", function($resource) {
+  return $resource("guests/:id", { id: '@id' }, {
     index: { method: 'GET', isArray: true, responseType: 'json' },
     update: { method: 'PUT', responseType: 'json' }
   });
 })
 
-visitorCenter.controller("visitorsController", function($scope, Visitor) {
-  $scope.visitors = Visitor.index()
+guestCenter.controller("guestsController", function($scope, Guest) {
+  $scope.guests = Guest.index()
 
-  $scope.addVisitor = function() {
-    visitor = Visitor.save($scope.newVisitor)
+  $scope.addGuest = function() {
+    guest = Guest.save($scope.newGuest)
 
-    $scope.visitors.push(visitor)
-    $scope.newVisitor = {}
+    $scope.guests.push(guest)
+    $scope.newGuest = {}
   }
 
-  $scope.deleteVisitor = function(index) {
-    visitor = $scope.visitors[index]
-    Visitor.delete(visitor)
-    $scope.visitors.splice(index, 1);
+  $scope.deleteGuest = function(index) {
+    guest = $scope.guests[index]
+    Guest.delete(guest)
+    $scope.guests.splice(index, 1);
   }
 })
