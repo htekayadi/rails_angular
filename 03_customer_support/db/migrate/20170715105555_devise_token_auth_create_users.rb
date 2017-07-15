@@ -42,6 +42,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.0]
       ## Tokens
       t.text :tokens
 
+      t.string :type, :null => false
       t.timestamps
     end
 
