@@ -1,24 +1,37 @@
-# README
+# Customer Support App
+A sample app for Ruby on Rails and AngularJS stack
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Architecture
 
-Things you may want to cover:
+### Back-end
+The Back-end of the application is a Ruby on Rails API. The API is based on the REST architecture and responds with JSON. The API follows the standard MVC design pattern.
 
-* Ruby version
+## Installation
+The app consists of Ruby on Rails back-end and AngularJS front-end
 
-* System dependencies
+### Back-end
+Installation links for various dependencies are provided:
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* [Rails](http://guides.railsgirls.com/install#setup-for-linux)
+* [MySQL](https://www.tutorialspoint.com/mysql/mysql-installation.htm)
 
-* Configuration
+After installing Rails and MySQL, execute the following command in project_root/
+```
+bundle install
+```
 
-* Database creation
+## Initialization
+Run the following the command to initialize the database
+```
+rails db:setup
+```
 
-* Database initialization
+## Test
+Most of the test-coverage of the app is through end-to-end tests implemented
+with Capybara. Some back-end unit-tests are also implemented with RSpec. To run
+them, execute the following command in project_root/
+```
+rspec spec/
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Running the app
