@@ -35,3 +35,4 @@ rspec spec/
 ```
 
 ## Running the app
+Open `localhost:3000` to view the app
