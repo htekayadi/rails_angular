@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  <head>
+  <body>
+    <div class="report">
+      <h1>Report of Requests Closed in Last 1 Month</h1>
+
+      <table style="width: 100%; text-align: center">
+        <thead>
+          <tr>
+            <tr>Id</tr>
+            <tr>Created At</tr>
+            <tr>Created By</tr>
+            <tr>Subject</tr>
+            <tr>Category</tr>
+            <tr>Closed At</tr>
+            <tr>Description</tr>
+          </tr>
+        </thead>
+        <tbody>
+          <% @support_requests.each do |support_Request| %>
+            <tr>
+              <td>#<%= support_request.id %></td>
+              <td>
+                <%= support_request.created_at.strftime("%B %d, %Y") %>
+              </td>
+              <td>
+                <%= support_request.customer.email %>
+              </td>
+              <td><%= support_request.subject %></td>
+              <td><%= support_request.category.humanize %></td>
+              <td>
+                <%= support_request.closed_at.strftime("%B %d, %Y") %>
+              </td>
+              <td>
+                <%= support_request.description %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
