@@ -1,4 +1,5 @@
 # Ruby on Rails with AngularJS Example
+A sample app for Ruby on Rails and AngularJS stack
 
 ### `Configuration`
 `bundle install`
