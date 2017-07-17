@@ -31,8 +31,7 @@ class AdminsController < ApplicationController
 
   def check_if_admin
     unless current_user.is_admin?
-      render json: {"errors" => ["Inaccessible Resource"]},
-             status: :unauthorized
+      render json: {"errors" => ["Inaccessible Resource"]}, status: :unauthorized
     end
   end
 

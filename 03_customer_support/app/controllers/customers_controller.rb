@@ -14,16 +14,14 @@ class CustomersController < ApplicationController
 
   def check_if_admin
     unless current_users.is_admin?
-      render json: { "errors" => ["Inaccessible Resource"]},
-             status: :unauthorized
+      render json: { "errors" => ["Inaccessible Resource"]}, status: :unauthorized
       return
     end
   end
 
   def check_if_admin_or_self
     unless current_user.is_admin? or current_user == @customer
-      render json: { "errors" => ["Inaccessible Resource"]},
-             status: :unauthorized
+      render json: { "errors" => ["Inaccessible Resource"]}, status: :unauthorized
       return
     end
   end
