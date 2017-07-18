@@ -1,0 +1,71 @@
+<div class="alert alert-danger" role="alert" ng-show="error">
+  {{error}}
+</div>
+
+<h1>New Support Request</h1>
+
+<form ng-submit = "submitSupportRequest(supportRequestForm)"
+      role="form"
+      ng-init="supportRequestForm = {}" >
+
+  <div class="form-group">
+    <label for="category">Category*</label>
+
+    <select class="form-control"
+            name = "category"
+            ng-model = "supportRequestForm.category"
+            required = "required" >
+      <option value = "" disabled="">
+        Select One
+      </option>
+      <option value = "installation_and_setup" >
+        Installation and Setup
+      </option>
+      <option value = "voice_quality">Voice Quality</option>
+      <option value = "video_quality">Video Quality</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="severity">Severity*</label>
+
+    <select class="form-control"
+            name = "severity"
+            ng-model = "supportRequestForm.severity"
+            required = "required" >
+      <option value = "" disabled="">
+        Select One
+      </option>
+      <option value = "low"
+              selected="selected">
+        Low
+      </option>
+      <option value = "medium">Medium</option>
+      <option value = "high">High</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="subject">Subject*</label>
+
+    <input type="text"
+           name="subject"
+           id="subject"
+           ng-model="supportRequestForm.subject"
+           required="required"
+           class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description*</label>
+
+    <textarea name="description"
+              id="description"
+              ng-model="supportRequestForm.description"
+              required="required"
+              class="form-control"
+              rows="5"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg">Create</button>
+</form>

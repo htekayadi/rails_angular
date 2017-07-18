@@ -1,0 +1,76 @@
+<h1>Support Requests</h1>
+
+<div class = "top-button-container">
+  <button type="submit"
+          class="btn btn-primary"
+          ng-click = "createNewSupportRequest()"
+          ng-show = "(currentUser.type === 'Customer')">
+    Create New
+  </button>
+
+  <button type="submit"
+          class="btn btn-primary"
+          ng-click = "viewReport()"
+          ng-show = "(currentUser.type !== 'Customer')">
+    View Report
+  </button>
+</div>
+
+<p ng-if = "(supportRequests.length === 0)">
+  <i>
+    No Support Requests Present
+  </i>
+</p>
+
+<div class = "table-responsive"
+     ng-if = "(supportRequests.length > 0)">
+  <table class = "table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Created At</th>
+          <th ng-if = "(currentUser['type'] !== 'Customer')">
+            Created By
+          </th>
+          <th>Subject</th>
+          <th>Category</th>
+          <th ng-if = "(currentUser['type'] === 'Admin')">
+            Assigned To
+          </th>
+          <th>Status</th>
+          <th ng-if = "(currentUser['type'] !== 'Agent')">
+            Closed At
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="supportRequest in supportRequests">
+          <td>#{{supportRequest["id"]}}</td>
+          <td>
+            {{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+          </td>
+          <td ng-if = "(currentUser['type'] !== 'Customer')">
+            {{supportRequest["customer"]}}
+          </td>
+          <td>{{supportRequest["subject"]}}</td>
+          <td>{{supportRequest["category"] | humanize}}</td>
+          <td ng-if = "(currentUser['type'] === 'Admin')">
+            {{supportRequest["agent"]}}
+          </td>
+          <td>{{supportRequest["status"]}}</td>
+          <td ng-if = "(currentUser['type'] !== 'Agent')">
+            <div ng-if = "supportRequest['status'] === 'closed'">
+              {{supportRequest["closed_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+            </div>
+          </td>
+          <td>
+            <a role = "button"
+               ng-click = "viewSupportRequest(supportRequest.id)" >
+              View
+            </a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
