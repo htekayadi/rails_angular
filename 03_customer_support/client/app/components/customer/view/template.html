@@ -1,0 +1,57 @@
+<div class="back-link">
+  <a ui-sref="customer-list">&lt; Customers</a>
+</div>
+
+<h1>Customer</h1>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-6">
+      <strong>Id: </strong> {{customer['id']}}
+    </div>
+    <div class="col-md-6">
+      <strong>Email: </strong> {{customer['email']}}
+    </div>
+  </div>
+</div>
+
+<h2>Support Requests</h2>
+
+<p ng-if="(customer['support_Requests'].length === 0)">
+  <i>
+    No Support Requests Present
+  </i>
+</p>
+
+<div class="table-responsive"
+     ng-if="(customer['support_requests'].length > 0)">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Created At</th>
+        <th>Subject</th>
+        <th>Category</th>
+        <th>Assigned To</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="supportRequest in customer['support_requests']">
+        <td>#{{supportRequest["id"]}}</td>
+        <td>{{supportRequest["created_at"] | date:'MM d, yyyy hh:mm a Z'}}</td>
+        <td>{{supportRequest["subject"]}}</td>
+        <td>{{supportRequest["category"]}}</td>
+        <td>{{supportRequest["agent"]}}</td>
+        <td>{{supportRequest["status"]}}</td>
+        <td>
+          <a role="button"
+             ng-click="viewSupportRequest(supportRequest.id)" >
+            View
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
