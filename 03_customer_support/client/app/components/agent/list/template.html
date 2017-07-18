@@ -1,0 +1,33 @@
+<h1>Agents</h1>
+
+<div class = "top-button-container">
+  <button type="submit"
+          class="btn btn-primary"
+          ng-click = "createNewAgent()" >
+    Create New
+  </button>
+</div>
+
+<div class = "table-responsive">
+  <table class = "table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="agent in agents">
+          <td>#{{agent["id"]}}</td>
+          <td>{{agent["email"]}}</td>
+          <td>
+            <a role = "button"
+               ng-click = "viewAgent(agent['id'])" >
+              View
+            </a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>

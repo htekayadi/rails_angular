@@ -1,0 +1,70 @@
+<div class="back-link">
+  <a ui-sref="agent-list">&lt; Agents</a>
+</div>
+
+<h1>Agent</h1>
+
+<div class="well">
+  <div class="row">
+    <div class="col-md-6">
+      <strong>Id: </strong> {{agent['id']}}
+    </div>
+    <div class="col-md-6">
+      <strong>Email: </strong> {{agent['email']}}
+    </div>
+  </div>
+</div>
+
+<div class="button-row clearfix">
+  <button class="btn btn-default pull-right"
+          type="submit"
+          ng-click="removeAgent()">
+    Remove
+  </button>
+</div>
+
+<h2>Support Requests</h2>
+
+<p ng-if="(agent['support_requests'].length ===0)">
+  <i>
+    No Support Requests Present
+  </i>
+</p>
+
+<div class="table-responsive"
+     ng-if="(agent['support_requests'].length > 0)">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Created At</th>
+        <th>Created By</th>
+        <th>Subject</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Closed At</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="supportRequest in agent['support_requests']">
+        <td>#{{supportRequest["id"]}}</td>
+        <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
+        <td>{{supportRequest["customer"]}}</td>
+        <td>{{supportRequest["subject"]}}</td>
+        <td>{{supportRequest["category"]}}</td>
+        <td>{{supportRequest["status"]}}</td>
+        <td>
+          <div ng-if="supportRequest['status'] === 'closed'">
+            {{supportRequest["closed_at"] | date: 'MMM d, yyyy hh:mm a Z'}}
+          </div>
+        </td>
+        <td>
+          <a role="button"
+             ng-click="viewSupportRequest(supportRequet.id)">
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
